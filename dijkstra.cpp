@@ -24,4 +24,21 @@ void initialization(int visitedNodes[N], bool visited[N], int costPath[N], int c
 	visited[source] = true; 
 }
 
+void printSolution(int costPath[N], int source, int prev[N]){
+	printf("Node\t\tCost\t\tPath");
+	for (int i = 0; i < N; i++){
+		if (i == source)
+			printf("\n%c\t\t-\t\t-", i+65);
+		else{
+			printf("\n%c\t\t%d\t\t%c", i+65, costPath[i], i+65);
+			/* Print all the nodes on the way to node i from source node */
+			int j = i;
+			do{
+				j = prev[j];
+				printf("<--%c", j+65);
+			} while(j != source);
+		}
+	}
+}
+
 
